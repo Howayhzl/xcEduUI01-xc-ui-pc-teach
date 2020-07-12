@@ -142,16 +142,19 @@
             if (valid) {
                 //调用api方法
               //将课程id设置到teachplanActive
-              this.teachplanActive.courseid = this.courseid
+              this.teachplanActive.courseid = this.courseid;
               courseApi.addTeachplan(this.teachplanActive).then(res=>{
+                alert(res)
+                console.log("返回的信息是："+res.toString())
                 if(res.success){
                     this.$message.success("添加成功")
+                    //清空表单
+                    this.teachplanActive = {}
                     //刷新树
                     this.findTeachplan()
                 }else{
                   this.$message.error(res.message)
                 }
-
               })
             }
         })
